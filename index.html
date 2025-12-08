@@ -29,21 +29,22 @@
 				<h1 id="app_title">{{ title }}</h1>
 				<div class="col-md-6" v-for="(movie, idx) in movies" :key="movie.title || idx">
 					<div class="thumbnail">
-						<img class="poster img-fluid" v-bind:src="(movie.posters && movie.posters[0]) || ''"
-							alt="Poster" />
-						<div class="imageInfo">Poster 1 of {{ (movie.posters && movie.posters.length) || 0 }}</div>
+						<img class="poster img-fluid"
+							v-bind:src="(movie.posters && movie.posters[movie.posterindex]) || ''" alt="Poster"
+							@click="posterClick(idx)" />
+						<div class="imageInfo">Poster {{ ((movie.posterindex || 0) + 1) }} of {{ (movie.posters &&
+							movie.posters.length) || 0 }}</div>
 						<p class="title">{{ movie.title }} ({{ movie.country }})</p>
 						<p class="score"><i class="bi bi-star" aria-hidden="true"></i> {{ movie.iscore }} </p>
-						<p class="runtime">Runtime: {{ movie.runtime }}</p>
-						<p class="released">Released: {{ Array.isArray(movie.released) ? movie.released.join('-') :
-							movie.released }} | Rated: {{ movie.rating }}</p>
+						<p class="runtime">Runtime: {{ timeText(movie.runtime) }}</p>
+						<p class="released">Released: {{ makeTextDate(movie.released) }} | Rated: {{ movie.rating }}</p>
 						<p class="websites">Websites: <a v-bind:href="movie.imdb" target="_blank">imdb</a> | <a
 								v-bind:href="movie.website" target="_blank">website</a></p>
 						<div class="social">
-							<p class="likes"><i class="bi bi-hand-thumbs-up" aria-hidden="true"></i> {{ movie.likes }}
-							</p>
-							<p class="dislikes"><i class="bi bi-hand-thumbs-down" aria-hidden="true"></i> {{
-								movie.dislikes }}</p>
+							<p class="likes" @click="like(idx)"><i class="bi bi-hand-thumbs-up" aria-hidden="true"></i>
+								{{ movie.likes }}</p>
+							<p class="dislikes" @click="dislike(idx)"><i class="bi bi-hand-thumbs-down"
+									aria-hidden="true"></i> {{ movie.dislikes }}</p>
 						</div>
 					</div>
 				</div>

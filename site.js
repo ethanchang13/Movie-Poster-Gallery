@@ -81,7 +81,37 @@ const vue_app = Vue.createApp({
             dislikes() { return this.currentMovie.dislikes || 0 }
       },
       methods: {
-            /* ADD FUNCTIONS/METHODS FOR STEP 7 HERE */
+            makeTextDate(dateArray) {
+                  if (!Array.isArray(dateArray) || dateArray.length < 3) return dateArray || ''
+                  const [y, m, d] = dateArray
+                  const mm = String(m).padStart(2, '0')
+                  const dd = String(d).padStart(2, '0')
+                  return `${y}-${mm}-${dd}`
+            },
+            like(index) {
+                  if (!this.movies || !this.movies[index]) return
+                  const m = this.movies[index]
+                  m.likes = (typeof m.likes === 'number') ? m.likes + 1 : 1
+            },
+            dislike(index) {
+                  if (!this.movies || !this.movies[index]) return
+                  const m = this.movies[index]
+                  m.dislikes = (typeof m.dislikes === 'number') ? m.dislikes + 1 : 1
+            },
+            posterClick(index) {
+                  if (!this.movies || !this.movies[index]) return
+                  const m = this.movies[index]
+                  if (!Array.isArray(m.posters) || m.posters.length === 0) return
+                  m.posterindex = (typeof m.posterindex === 'number') ? (m.posterindex + 1) % m.posters.length : 0
+            },
+            timeText(minutes) {
+                  if (!minutes && minutes !== 0) return ''
+                  const mins = Number(minutes)
+                  if (Number.isNaN(mins)) return ''
+                  const h = Math.floor(mins / 60)
+                  const m = mins % 60
+                  return h > 0 ? `${h}h ${m}m` : `${m}m`
+            }
       }
 })
 
