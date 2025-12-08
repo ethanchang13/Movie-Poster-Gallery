@@ -24,7 +24,7 @@
 const vue_app = Vue.createApp({
       // This automatically imports your movies.json file and puts it into
       //   the variable: movies
-      created () {
+      created() {
             if (this.title) document.title = this.title
 
             fetch('movies.json').then(response => response.json()).then(json => {
@@ -32,15 +32,54 @@ const vue_app = Vue.createApp({
             })
       },
       data() {
-        return {
-            // This holds your movies.json data.
-            movies: [],
-            /* ADD ADDITIONAL VARIABLES FOR STEP 3 HERE */
-            title: 'IS219 Gallery (Project 3)',
-            owner: 'ethanchang13',
-            githubLink: 'https://github.com/ethanchang13/Movie-Poster-Gallery'
-      }
-    },
+            return {
+                  // This holds your movies.json data.
+                  movies: [],
+                  /* ADD ADDITIONAL VARIABLES FOR STEP 3 HERE */
+                  title: 'IS219 Gallery (Project 3)',
+                  owner: 'ethanchang13',
+                  githubLink: 'https://github.com/ethanchang13/Movie-Poster-Gallery'
+                  ,
+                  currentIndex: 0
+            }
+      },
+      computed: {
+            currentMovie() {
+                  return (this.movies && this.movies.length) ? this.movies[this.currentIndex] : {}
+            },
+            movieTitle() {
+                  return this.currentMovie.title || ''
+            },
+            poster() {
+                  const m = this.currentMovie
+                  if (!m) return ''
+                  if (Array.isArray(m.posters)) {
+                        const idx = (typeof m.posterindex === 'number') ? m.posterindex : 0
+                        return m.posters[idx] || ''
+                  }
+                  return ''
+            },
+            posterindex() {
+                  const m = this.currentMovie
+                  if (!m) return ''
+                  const idx = (typeof m.posterindex === 'number') ? (m.posterindex + 1) : 1
+                  const total = (Array.isArray(m.posters)) ? m.posters.length : 1
+                  return `Poster ${idx} of ${total}`
+            },
+            country() { return this.currentMovie.country || '' },
+            iscore() { return this.currentMovie.iscore || '' },
+            runtime() { return this.currentMovie.runtime || '' },
+            released() {
+                  const r = this.currentMovie.released
+                  if (Array.isArray(r)) return r.join('-')
+                  return this.currentMovie.released || ''
+            },
+            rating() { return this.currentMovie.rating || '' },
+            imdbLink() { return this.currentMovie.imdb || '#' },
+            websiteLink() { return this.currentMovie.website || '#' },
+            likes() { return this.currentMovie.likes || 0 },
+            dislikes() { return this.currentMovie.dislikes || 0 }
+      },
       methods: {
             /* ADD FUNCTIONS/METHODS FOR STEP 7 HERE */
       }
