@@ -38,14 +38,15 @@
 				<div class="col-md-6">
 					<div class="thumbnail">
 
-						<img class="poster img-fluid" :src="poster" alt="Poster" />
+						<img class="poster img-fluid" v-bind:src="poster" alt="Poster" />
 						<div class="imageInfo">{{ posterindex }}</div>
 
 						<p class="title">{{ title }} ({{ country }})</p>
 						<p class="score"><i class="bi bi-star" aria-hidden="true"></i> {{ iscore }} </p>
 						<p class="runtime">Runtime: {{ runtime }}</p>
 						<p class="released">Released: {{ released }} | Rated: {{ rating }}</p>
-						<p class="websites">Websites: <a :href="imdbLink">imdb</a> | <a :href="websiteLink">website</a>
+						<p class="websites">Websites: <a v-bind:href="imdbLink">imdb</a> | <a
+								v-bind:href="websiteLink">website</a>
 						</p>
 
 						<div class="social">
@@ -61,7 +62,7 @@
 
 		<div class="footer">
 			<div class="container">
-				<a id="github" class="btn btn-lg btn-warning" :href="githubLink" target="_blank">
+				<a id="github" class="btn btn-lg btn-warning" v-bind:href="githubLink" target="_blank">
 					<i class="bi bi-github me-2"></i>{{ owner }}
 				</a>
 			</div>
