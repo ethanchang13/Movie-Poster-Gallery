@@ -27,46 +27,38 @@
 
 			<div class="container">
 				<h1 id="app_title">{{ title }}</h1>
-			</div>
-
-		</div>
-
-		<div class="main">
-
-			<div class="row">
-
-				<div class="col-md-6">
+				<div class="col-md-6" v-for="(movie, idx) in movies" :key="movie.title || idx">
 					<div class="thumbnail">
-
-						<img class="poster img-fluid" v-bind:src="poster" alt="Poster" />
-						<div class="imageInfo">{{ posterindex }}</div>
-
-						<p class="title">{{ movieTitle }} ({{ country }})</p>
-						<p class="score"><i class="bi bi-star" aria-hidden="true"></i> {{ iscore }} </p>
-						<p class="runtime">Runtime: {{ runtime }}</p>
-						<p class="released">Released: {{ released }} | Rated: {{ rating }}</p>
-						<p class="websites">Websites: <a v-bind:href="imdbLink">imdb</a> | <a
-								v-bind:href="websiteLink">website</a>
-						</p>
-
+						<img class="poster img-fluid" v-bind:src="(movie.posters && movie.posters[0]) || ''"
+							alt="Poster" />
+						<div class="imageInfo">Poster 1 of {{ (movie.posters && movie.posters.length) || 0 }}</div>
+						<p class="title">{{ movie.title }} ({{ movie.country }})</p>
+						<p class="score"><i class="bi bi-star" aria-hidden="true"></i> {{ movie.iscore }} </p>
+						<p class="runtime">Runtime: {{ movie.runtime }}</p>
+						<p class="released">Released: {{ Array.isArray(movie.released) ? movie.released.join('-') :
+							movie.released }} | Rated: {{ movie.rating }}</p>
+						<p class="websites">Websites: <a v-bind:href="movie.imdb" target="_blank">imdb</a> | <a
+								v-bind:href="movie.website" target="_blank">website</a></p>
 						<div class="social">
-							<p class="likes"><i class="bi bi-hand-thumbs-up" aria-hidden="true"></i> {{ likes }}</p>
-							<p class="dislikes"><i class="bi bi-hand-thumbs-down" aria-hidden="true"></i> {{ dislikes }}
+							<p class="likes"><i class="bi bi-hand-thumbs-up" aria-hidden="true"></i> {{ movie.likes }}
 							</p>
+							<p class="dislikes"><i class="bi bi-hand-thumbs-down" aria-hidden="true"></i> {{
+								movie.dislikes }}</p>
 						</div>
 					</div>
 				</div>
-
 			</div>
-		</div>
 
-		<div class="footer">
-			<div class="container">
-				<a id="github" class="btn btn-lg btn-warning" v-bind:href="githubLink" target="_blank">
-					<i class="bi bi-github me-2"></i>{{ owner }}
-				</a>
-			</div>
 		</div>
+	</div>
+
+	<div class="footer">
+		<div class="container">
+			<a id="github" class="btn btn-lg btn-warning" v-bind:href="githubLink" target="_blank">
+				<i class="bi bi-github me-2"></i><span v-text="owner"></span>
+			</a>
+		</div>
+	</div>
 	</div>
 
 	<!-- This load the Vue.js code -->
