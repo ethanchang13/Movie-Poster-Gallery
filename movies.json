@@ -68,5 +68,47 @@
             "likes": 812,
             "dislikes": 101,
             "posterindex": 0
+      },
+      {
+            "title": "One Flew Over the Cuckoo's Nest",
+            "iscore": 8.6,
+            "rating": "R",
+            "runtime": 134,
+            "released": [1975, 11, 19],
+            "country": "USA",
+            "posters": ["img/oneflewoverthecuckoosnest2.jpg"],
+            "imdb": "https://www.imdb.com/title/tt0073486/",
+            "website": "https://en.wikipedia.org/wiki/One_Flew_Over_the_Cuckoo%27s_Nest_(film)",
+            "likes": 745,
+            "dislikes": 89,
+            "posterindex": 0
+      },
+      {
+            "title": "Train to Busan",
+            "iscore": 7.6,
+            "rating": "R",
+            "runtime": 118,
+            "released": [2016, 7, 20],
+            "country": "South Korea",
+            "posters": ["img/traintobusan.jpg", "img/traintobusan2.webp"],
+            "imdb": "https://www.imdb.com/title/tt5700672/",
+            "website": "https://en.wikipedia.org/wiki/Train_to_Busan",
+            "likes": 652,
+            "dislikes": 74,
+            "posterindex": 0
+      },
+      {
+            "title": "Ratatouille",
+            "iscore": 8.1,
+            "rating": "G",
+            "runtime": 111,
+            "released": [2007, 6, 29],
+            "country": "USA",
+            "posters": ["img/ratatouille.jpg", "img/ratatouille2.jpeg"],
+            "imdb": "https://www.imdb.com/title/tt0382932/",
+            "website": "https://www.google.com/search?q=ratatouille+wiki&rlz=1C1GCEA_enUS1178US1179&oq=ratatouille+wiki&gs_lcrp=EgZjaHJvbWUqBggAEEUYOzIGCAAQRRg7MgYIARBFGDzSAQgzMzczajBqNKgCALACAA&sourceid=chrome&ie=UTF-8&safe=active&ssui=on",
+            "likes": 889,
+            "dislikes": 65,
+            "posterindex": 0
       }
 ]

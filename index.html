@@ -24,9 +24,13 @@
 	<div id="vue_app" class="container" v-cloak>
 
 		<div class="header">
-
 			<div class="container">
 				<h1 id="app_title">{{ title }}</h1>
+			</div>
+		</div>
+
+		<div class="main">
+			<div class="row">
 				<div class="col-md-6" v-for="(movie, idx) in movies" :key="movie.title || idx">
 					<div class="thumbnail">
 						<img class="poster img-fluid"
@@ -49,22 +53,20 @@
 					</div>
 				</div>
 			</div>
-
 		</div>
-	</div>
 
-	<div class="footer">
-		<div class="container">
-			<a id="github" class="btn btn-lg btn-warning" v-bind:href="githubLink" target="_blank">
-				<i class="bi bi-github me-2"></i><span v-text="owner"></span>
-			</a>
+		<div class="footer">
+			<div class="container">
+				<a id="github" class="btn btn-lg btn-warning" v-bind:href="githubLink" target="_blank">
+					<i class="bi bi-github me-2"></i><span v-text="owner"></span>
+				</a>
+			</div>
 		</div>
-	</div>
+
 	</div>
 
-	<!-- This load the Vue.js code -->
+	<!-- This loads the Vue.js code -->
 	<script type="text/javascript" src="site.js"></script>
-
 
 </body>
 
